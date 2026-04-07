@@ -5,7 +5,7 @@
 @section('content')
 <div class="space-y-6">
 
-    <!-- Welcome banner -->
+    <!-- Welcome -->
     <div class="rounded-2xl p-6 text-white relative overflow-hidden"
          style="background: linear-gradient(135deg, #1a1712 0%, #4a4236 100%);">
         <div class="relative z-10">
