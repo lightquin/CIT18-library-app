@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // ── Users ──────────────────────────────────────────────
+        // user
         $admin = User::create([
             'name'     => 'Admin User',
             'email'    => 'admin@library.com',
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
             'role'     => 'member',
         ]);
 
-        // ── Categories ─────────────────────────────────────────
+        // category
         $categories = [
             ['name' => 'Fiction',         'color' => '#6366f1', 'description' => 'Novels and short stories'],
             ['name' => 'Science',         'color' => '#0ea5e9', 'description' => 'Natural and applied sciences'],
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             $cats[] = Category::create(array_merge($cat, ['slug' => Str::slug($cat['name'])]));
         }
 
-        // ── Authors ────────────────────────────────────────────
+        // author
         $authors = [
             ['name' => 'Jose Rizal',          'nationality' => 'Filipino',   'birth_date' => '1861-06-19'],
             ['name' => 'Gabriel García Márquez','nationality' => 'Colombian', 'birth_date' => '1927-03-06'],
@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
             $authorModels[] = Author::create($a);
         }
 
-        // ── Books ──────────────────────────────────────────────
+        // book
         $books = [
             ['title' => 'Noli Me Tangere',              'isbn' => '978-971-10-0001-1', 'author' => 0, 'category' => 0, 'year' => 1887, 'copies' => 5, 'price' => 250],
             ['title' => 'El Filibusterismo',            'isbn' => '978-971-10-0002-2', 'author' => 0, 'category' => 0, 'year' => 1891, 'copies' => 4, 'price' => 250],
@@ -104,7 +104,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // ── Sample borrowings ──────────────────────────────────
+        // sample borrow
         Borrowing::create([
             'user_id'     => $member1->id,
             'book_id'     => $bookModels[0]->id,
