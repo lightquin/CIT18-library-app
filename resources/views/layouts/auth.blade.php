@@ -24,7 +24,12 @@
         body { font-family: 'DM Sans', sans-serif; }
         .font-display { font-family: 'Playfair Display', serif; }
         .auth-bg {
-            background: linear-gradient(160deg, #1a1712 0%, #312c24 60%, #4a4236 100%);
+            background-color: #1a1712;
+            background-image:
+                radial-gradient(circle at top, rgba(245, 158, 11, 0.18), transparent 42%),
+                linear-gradient(160deg, #1a1712 0%, #2f281f 55%, #4a4236 100%);
+            background-size: auto, cover;
+            background-position: center, center;
         }
         .form-input {
             border: 1.5px solid #d1c9b5;
@@ -55,7 +60,7 @@
 <body class="min-h-screen flex">
 
     <!-- Left panel -->
-    <div class="hidden lg:flex lg:w-1/2 auth-bg pattern flex-col justify-between p-12">
+    <div class="hidden lg:flex lg:w-1/2 auth-bg pattern flex-col justify-between p-12 text-white">
         <!-- Logo -->
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center">
@@ -71,16 +76,16 @@
             <h2 class="font-display text-4xl text-white font-semibold leading-tight mb-4">
                 The modern library<br>management system.
             </h2>
-            <p class="text-amber-200/70 text-lg leading-relaxed">
+            <p class="text-amber-100/80 text-lg leading-relaxed max-w-md">
                 Organize your collection, manage members,<br>and track borrowings — all in one place.
             </p>
 
             <!-- Feature list -->
             <ul class="mt-8 space-y-3">
                 @foreach(['Comprehensive book catalog management', 'Member tracking & borrowing history', 'Smart search and filtering', 'Overdue alerts & fine management'] as $feature)
-                <li class="flex items-center gap-3 text-amber-100/80 text-sm">
-                    <span class="w-5 h-5 rounded-full bg-amber-500/30 flex items-center justify-center flex-shrink-0">
-                        <svg class="w-3 h-3 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <li class="flex items-center gap-3 text-amber-50/90 text-sm">
+                    <span class="w-5 h-5 rounded-full bg-amber-500/25 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-3 h-3 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
                         </svg>
                     </span>
@@ -90,7 +95,7 @@
             </ul>
         </div>
 
-        <p class="text-amber-900/50 text-xs">© {{ date('Y') }} LibraFlow. All rights reserved.</p>
+        <p class="text-amber-100/40 text-xs">© {{ date('Y') }} LibraFlow. All rights reserved.</p>
     </div>
 
     <!-- Right panel - Form -->
