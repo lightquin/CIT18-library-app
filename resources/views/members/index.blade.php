@@ -13,7 +13,7 @@
             <div class="flex gap-2">
                 <button type="submit" class="btn-primary px-4 py-2.5 rounded-lg text-sm">Search</button>
                 <a href="{{ route('members.index') }}" class="px-4 py-2.5 rounded-lg text-sm bg-ink-100 hover:bg-ink-200 text-ink-700">Reset</a>
-                <a href="{{ route('members.create') }}" class="px-4 py-2.5 rounded-lg text-sm bg-amber-500 hover:bg-amber-600 text-white font-medium">Register Member</a>
+                <a href="{{ route('members.create') }}" class="px-4 py-2.5 rounded-lg text-sm bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors">Register Member</a>
             </div>
         </form>
     </div>
@@ -30,7 +30,7 @@
                 </thead>
                 <tbody class="divide-y divide-ink-100">
                     @forelse($members as $member)
-                    <tr class="hover:bg-ink-50/60">
+                    <tr class="hover:bg-ink-50/60 transition-colors">
                         <td class="px-5 py-4 font-medium text-ink-800">{{ $member->name }}</td>
                         <td class="px-5 py-4 text-ink-600">{{ $member->email }}</td>
                         <td class="px-5 py-4 text-ink-500">{{ $member->created_at->format('M d, Y') }}</td>

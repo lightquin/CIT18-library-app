@@ -19,7 +19,7 @@
             <div class="flex gap-2">
                 <button type="submit" class="btn-primary px-4 py-2.5 rounded-lg text-sm">Filter</button>
                 <a href="{{ route('borrowings.index') }}" class="px-4 py-2.5 rounded-lg text-sm bg-ink-100 hover:bg-ink-200 text-ink-700">Reset</a>
-                <a href="{{ route('borrowings.create') }}" class="px-4 py-2.5 rounded-lg text-sm bg-amber-500 hover:bg-amber-600 text-white font-medium">Record</a>
+                <a href="{{ route('borrowings.create') }}" class="px-4 py-2.5 rounded-lg text-sm bg-blue-500 hover:bg-blue-600 text-white font-medium">Record</a>
             </div>
         </form>
     </div>
