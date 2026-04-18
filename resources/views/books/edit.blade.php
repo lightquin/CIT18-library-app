@@ -58,15 +58,9 @@
                     <label class="block text-sm font-medium text-ink-700 mb-1.5">
                         Author <span class="text-red-500">*</span>
                     </label>
-                    <select name="author_id" class="form-input w-full px-4 py-2.5 text-ink-700 bg-white text-sm" required>
-                        <option value="">Select author</option>
-                        @foreach($authors as $author)
-                            <option value="{{ $author->id }}"
-                                {{ old('author_id', $book->author_id) == $author->id ? 'selected' : '' }}>
-                                {{ $author->name }}
-                            </option>
-                        @endforeach
-                    </select>
+                    <input type="text" name="author_name" value="{{ old('author_name', $book->author->name) }}"
+                           class="form-input w-full px-4 py-2.5 text-ink-800 bg-white text-sm"
+                           placeholder="e.g. George Orwell" required>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-ink-700 mb-1.5">

@@ -42,9 +42,8 @@ class BookController extends Controller
 
     public function create()
     {
-        $authors    = Author::orderBy('name')->get();
         $categories = Category::orderBy('name')->get();
-        return view('books.create', compact('authors', 'categories'));
+        return view('books.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -53,13 +52,20 @@ class BookController extends Controller
             'title'          => 'required|string|max:255',
             'isbn'           => 'required|string|max:20|unique:books,isbn',
             'description'    => 'nullable|string',
-            'author_id'      => 'required|exists:authors,id',
+            'author_name'    => 'required|string|max:255',
             'category_id'    => 'required|exists:categories,id',
             'published_year' => 'required|integer|min:1000|max:' . date('Y'),
             'publisher'      => 'nullable|string|max:255',
             'total_copies'   => 'required|integer|min:1',
             'price'          => 'nullable|numeric|min:0',
         ]);
+
+        $author = Author::firstOrCreate([
+            'name' => trim($validated['author_name']),
+        ]);
+
+        $validated['author_id'] = $author->id;
+        unset($validated['author_name']);
 
         $validated['available_copies'] = $validated['total_copies'];
         $validated['created_by']       = Auth::id();
@@ -79,9 +85,8 @@ class BookController extends Controller
 
     public function edit(Book $book)
     {
-        $authors    = Author::orderBy('name')->get();
         $categories = Category::orderBy('name')->get();
-        return view('books.edit', compact('book', 'authors', 'categories'));
+        return view('books.edit', compact('book', 'categories'));
     }
 
     public function update(Request $request, Book $book)
@@ -90,13 +95,20 @@ class BookController extends Controller
             'title'          => 'required|string|max:255',
             'isbn'           => 'required|string|max:20|unique:books,isbn,' . $book->id,
             'description'    => 'nullable|string',
-            'author_id'      => 'required|exists:authors,id',
+            'author_name'    => 'required|string|max:255',
             'category_id'    => 'required|exists:categories,id',
             'published_year' => 'required|integer|min:1000|max:' . date('Y'),
             'publisher'      => 'nullable|string|max:255',
             'total_copies'   => 'required|integer|min:1',
             'price'          => 'nullable|numeric|min:0',
         ]);
+
+        $author = Author::firstOrCreate([
+            'name' => trim($validated['author_name']),
+        ]);
+
+        $validated['author_id'] = $author->id;
+        unset($validated['author_name']);
 
         // Adjust available copies proportionally
         $diff = $validated['total_copies'] - $book->total_copies;
